@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="./scss/style.css">
+    <title>Git in #100DaysOfCode</title>
+</head>
+<body>
+    <header>
+        <h1>This is about Git</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>More specifically, what I learned in Git during my #100DaysOfCode.</h2>
+
+            <nav>
+                <span class="btn current" id="repo">REPOS</span>
+                <span class="btn" id="branch">BANCHING</span>
+                <span class="btn" id="remote">REMOTE</span>
+            </nav>
+
+            <!-- repository -->
+            <div class="repos">
+                <div class="code">
+                    <span>~$ git init</span>
+                </div>
+                <p>
+                   This will initialise a .git directory (which is usually invisible but can be viewed in the terminal or by modifying the settings). You're basically telling the directory that you want to track it's content.
+                </p>
+                <div class="code">
+                    <span>~$ git add filename.here</span>
+                    <span>~$ git add .</span>
+                </div>
+                <p>
+                    After creating or making any changes to files in the directory, you wanna go ahead and "add" those changes to the index. Otherwise Git registers them as "unstaged". The difference in these commands is just that the command with a dot where you'd write your file's name adds/stages all the changes, meaning you don't have to determine each file (that is, if you wanna stage them all). To find out if there are  any changes to files you run:
+                </p>
+                <div class="code">
+                    <span>~$ git status</span>
+                </div>
+                <p>
+                    Git will return information about changes, if they exist and are unstaged, relevant file names will appear in red but if changes are staged but not committed, they'll appear in green or gray depending on your OS, otherwise:
+                </p>
+                <div class="code">
+                    <span>~$ git status</span>
+                    <br>
+                    <span>On branch master<br>nothing to commit, working tree clean</span>
+                </div>
+                <p>
+                    Which just means everything's committed and up to date.
+                </p>
+                <div class="code">
+                    <span>~$ git commit</span>
+                </div>
+                <p>
+                    Commit checks the index/ staging area for changes that were staged "added" makes a snapshot at a point in time (which you can always go back to if you want a preveous version of your project).
+                </p>
+                <div class="code">
+                    <span>~$ git commit</span>
+                    <br>
+                    <span></span>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    
+    <script src="./js/index.js"></script>
+</body>
+</html>

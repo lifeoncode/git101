@@ -1,0 +1,92 @@
+@import "./config";
+
+body {
+  background-color: $bg-primary;
+}
+
+header {
+  text-align: center;
+  padding: 16px;
+  background-color: inherit;
+  box-shadow: 0 4px 16px #000;
+
+  h1 {
+    font-size: $large;
+    color: $text-lighter;
+  }
+}
+
+main {
+  padding: 64px 0;
+
+  .container {
+    width: 600px;
+    max-width: 90%;
+    margin: 0 auto;
+
+    h2 {
+      font-size: $big;
+      color: $text-lighter;
+    }
+
+    p {
+      font-size: $medium - 1;
+      color: $text-light;
+    }
+
+    .code {
+      position: relative;
+      background-color: $bg-secondary;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 8px 0;
+    }
+
+    span {
+      font-size: $small;
+      color: $text-dark;
+      display: block;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      @include flex(row, center, space-between, wrap);
+      margin: 32px 0;
+      padding: 5px 16px 0 16px;
+      transform: scale(1.1);
+      background-color: $bg-primary;
+      box-shadow: 0 0 10px #000;
+
+      span.btn {
+        border: 0;
+        background-color: transparent;
+        font-size: $medium;
+        letter-spacing: 2px;
+        color: $text-lighter;
+        font-weight: bold;
+        border-bottom: 4px solid $bg-primary;
+        padding: 10px 16px;
+        cursor: pointer;
+        @include transitionFast;
+
+        &:active {
+          transform: scale(0.9);
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &:hover {
+          color: lighten($color: red, $amount: 20%);
+        }
+
+        &.current {
+          border-bottom: 4px solid red;
+        }
+      }
+    }
+  }
+}
