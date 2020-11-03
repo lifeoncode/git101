@@ -19,6 +19,16 @@ p {
   font-family: "Hind", sans-serif;
 }
 
+.staged {
+  display: inline !important;
+  color: rgb(37, 131, 37) !important;
+}
+
+.unstaged {
+  display: inline !important;
+  color: rgb(237, 71, 71) !important;
+}
+
 span {
   font-family: monospace;
 }

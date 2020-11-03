@@ -17,13 +17,13 @@
             <h2>If you're reading this you already know what Git is and what it is used for so I'm not gonna explain that.</h2>
 
             <nav>
-                <span class="btn current" id="repo">LOCAL</span>
+                <span class="btn current" id="local">LOCAL</span>
                 <span class="btn" id="branch">BANCHING</span>
                 <span class="btn" id="remote">REMOTE</span>
             </nav>
 
             <!-- local repositories -->
-            <div class="repos">
+            <div id="local-content">
                 <p>
                     The repositories in your machine are referred to as 'local repositories'. Git keeps track of files in your repos so they're ready for pushing to Github. (more on that on "remote").
                 </p>
@@ -44,7 +44,27 @@
                     <span>~$ git status</span>
                 </div>
                 <p>
-                    Git will return the 'status' of the repo, if there are any changes, relevant file names will appear in red but if changes are staged but not committed, they'll appear in green or gray depending on your OS, otherwise:
+                    Git will return the 'status' of the repo, if there are any changes, relevant file names will appear in red but if changes are staged but not committed, they'll appear in green or gray depending on your OS:
+                </p>
+                <div class="code">
+                    <span>
+                        On branch master<br>
+                        Changes to be committed:<br>
+                        (use "git restore --staged <file>..." to unstage)<br>
+                                modified:   <span class="staged">index.html</span><br><br>
+
+                        Changes not staged for commit:<br>
+                        (use "git add <file>..." to update what will be committed)<br>
+                        (use "git restore <file>..." to discard changes in working directory)<br>
+                                modified:   <span class="unstaged">index.html</span><br>
+                                modified:   <span class="unstaged">js/index.js</span><br>
+                                modified:   <span class="unstaged">scss/style.css</span><br>
+                                modified:   <span class="unstaged">scss/style.css.map</span><br>
+                                modified:   <span class="unstaged">scss/style.scss</span>
+                    </span>
+                </div>
+                <p>
+                    Otherwise:
                 </p>
                 <div class="code">
                     <span>~$ git status</span>
@@ -54,19 +74,101 @@
                 <p>
                     Which just means everything's committed and up to date.
                 </p>
+                <p>
+                    Git status output is pretty wordy. There's a more compact way to get the same result. If you run:
+                </p>
+                <div class="code">
+                    <span>~$ git status -s</span>
+                </div>
+                <p>
+                    Or
+                </p>
+                <div class="code">
+                    <span>~$ git status --short</span>
+                </div>
+                <p>
+                    You get a more simplified output from the command.
+                </p>
                 <div class="code">
                     <span>~$ git commit</span>
                 </div>
                 <p>
                     Commit checks the index/staging area for changes that were staged "added", makes a snapshot at a point in time (which you can always go back to if you want a preveous version of your project).
                 </p>
+                <br>
+                <p>
+                    If you run:
+                </p>
                 <div class="code">
                     <span>~$ git commit</span>
-                    <br>
-                    <span></span>
                 </div>
+                <p>
+                    You'll run into something like this:
+                </p>
+                <div class="code">
+                    <span>
+                        # Please enter the commit message for your changes.<br>
+                        # Lines starting with '#' will be ignored.<br>
+                        # and an empty message aborts the commit.<br>
+                        #<br>
+                        # On branch master<br>
+                        # Changes to be committed:<br>
+                        #       modified:   index.html<br>
+                        #
+                    </span>
+                </div>
+                <p>
+                    This is just Git requesting you to enter a commit message. A brief description about the changes you want to commit to the repo. Your commit messages should be descriptive enough for you or anyone to understand what you changed and why. This also makes it easy to travel back in time to your previous versions of the project. You can add a message to your commit in 1 command with:
+                </p>
+                <div class="code">
+                    <span>~$ git commit -m 'message here'</span>
+                </div>
+                <p>
+                    Another useful Git command is:
+                </p>
+                <div class="code">
+                    <span>~$ git diff</span>
+                </div>
+                <p>
+                    Git will show details about what exactly was changed, what was added or removed on which file/files etc...
+                </p>
+                <div class="code">
+                    <span>
+                        diff --git a/index.html b/index.html<br>
+                        index 255d084..efc3ebf 100644<br>
+                        --- a/index.html<br>
+                        +++ b/index.html<br>
+                        :...skipping...<br>
+                        diff --git a/index.html b/index.html<br>
+                        index 255d084..efc3ebf 100644<br>
+                        --- a/index.html<br>
+                        +++ b/index.html<br>
+                        @@ -17,13 +17,13 @@
+                    </span>
+                </div>
+                <p>
+                    This becomes really useful if all the commit messages of the repositories aren't descriptive enough. Most developers don't put a lot of thought and effort into writing good commit messages because the 'log' can be self-explanatory but as the project expands with more and more features being added and updates being made, it can get confusing.
+                </p>
             </div>
             
+
+
+            <!-- branching -->
+            <div id="branch-content">
+                <p>
+                    THIS IS BRANCHING.
+                </p>
+            </div>
+
+
+
+
+            <!-- branching -->
+            <div id="remote-content">
+                <p>
+                    THIS IS REMOTE.
+                </p>
+            </div>
         </div>
     </main>
     

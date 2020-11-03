@@ -19,6 +19,16 @@ p {
   font-family: "Hind", sans-serif;
 }
 
+.staged {
+  display: inline !important;
+  color: #258325 !important;
+}
+
+.unstaged {
+  display: inline !important;
+  color: #ed4747 !important;
+}
+
 span {
   font-family: monospace;
 }
@@ -29,6 +39,17 @@ span {
 
 body {
   background-color: #131514;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  background-color: inherit;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 32px;
+  background-color: #eb2525;
 }
 
 header {
@@ -42,6 +63,11 @@ header {
 header h1 {
   font-size: 32px;
   color: #f5f5f5;
+}
+
+#branch-content,
+#remote-content {
+  display: none;
 }
 
 main {

@@ -2,6 +2,16 @@
 
 body {
   background-color: $bg-primary;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  background-color: inherit;
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 32px;
+  background-color: rgb(235, 37, 37);
 }
 
 header {
@@ -14,6 +24,11 @@ header {
     font-size: $large;
     color: $text-lighter;
   }
+}
+
+#branch-content,
+#remote-content {
+  display: none;
 }
 
 main {
