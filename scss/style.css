@@ -29,6 +29,21 @@ p {
   color: #ed4747 !important;
 }
 
+.head {
+  display: inline !important;
+  color: #0084ff !important;
+}
+
+.brnch {
+  display: inline !important;
+  color: deeppink !important;
+}
+
+.id {
+  display: inline !important;
+  color: gold !important;
+}
+
 span {
   font-family: monospace;
 }

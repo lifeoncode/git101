@@ -50,7 +50,7 @@
                     <span>
                         On branch master<br>
                         Changes to be committed:<br>
-                        (use "git restore --staged <file>..." to unstage)<br>
+                        (use "git restore --staged < file >..." to unstage)<br>
                                 modified:   <span class="staged">index.html</span><br><br>
 
                         Changes not staged for commit:<br>
@@ -89,9 +89,68 @@
                 <p>
                     You get a more simplified output from the command.
                 </p>
+                <p>
+                    To remove files on the repo you can run:
+                </p>
                 <div class="code">
-                    <span>~$ git commit</span>
+                    <span>~$ git rm -f 'filename here'</span>
                 </div>
+                <p>
+                    This command will remove/delete the file from your repo completely. But if you just want to remove the file from the staging area, maybe it you 'added' if by mistake and don't want it's changes committed, you can instead run:
+                </p>
+                <div class="code">
+                    <span>~$ git rm --cached 'filename here'</span>
+                </div>
+                <p>
+                    This will remove the file from staging area and Git will show it as unstaged if you run 'git status'. 
+                </p>
+                <div class="code">
+                    <span>
+                        On branch master<br>
+                        Changes to be committed:<br>
+                        (use "git restore --staged < file >..." to unstage)<br>
+                                <span class="staged">
+                                    modified:   README.md<br>
+                                    deleted:    file.txt<br>
+                                    modified:   message.txt<br>
+                                </span>
+
+                        Untracked files:<br>
+                        (use "git add < file >..." to include in what will be committed)<br>
+                                <span class="unstaged">file.txt</span>
+
+                    </span>
+                </div>
+                <p>
+                    However, notice how there's 'deleted: file.txt' in the staging area... this means that file.txt still technically exists in the staging area.
+                </p>
+                <div class="code">
+                    <span>~$ git restore --staged file.txt</span>
+                </div>
+                <p>
+                    This command removes file.txt from the staging area correctly. Very useful if you accidentally commit all the changes you make in your repo, you can then just pick which files to take down from staging area before committing.
+                </p>
+                <div class="code">
+                    <span>
+                        On branch master<br>
+                        Changes to be committed:<br>
+                        (use "git restore --staged < file >..." to unstage)<br>
+                            <span class="staged">
+                                modified:   README.md<br>
+                                modified:   message.txt
+                            </span>
+
+                        Changes not staged for commit:<br>
+                        (use "git add < file >..." to update what will be committed)<br>
+                        (use "git restore < file >..." to discard changes in working directory)<br>
+                                <span class="unstaged">modified:   file.txt</span>
+
+                    </span>
+                </div>
+                <p>
+                    All good.
+                </p>
+                <br>
                 <p>
                     Commit checks the index/staging area for changes that were staged "added", makes a snapshot at a point in time (which you can always go back to if you want a preveous version of your project).
                 </p>
@@ -107,14 +166,19 @@
                 </p>
                 <div class="code">
                     <span>
-                        # Please enter the commit message for your changes.<br>
-                        # Lines starting with '#' will be ignored.<br>
-                        # and an empty message aborts the commit.<br>
-                        #<br>
+                        # Please enter the commit message for your changes. Lines starting<br>
+                        # with '#' will be ignored, and an empty message aborts the commit.<br>
                         # On branch master<br>
+                        # Your branch is up-to-date with 'origin/master'.<br>
+                        #<br>
                         # Changes to be committed:<br>
-                        #       modified:   index.html<br>
-                        #
+                        # new file: README<br>
+                        # modified: CONTRIBUTING.md<br>
+                        #<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ".git/COMMIT_EDITMSG" 9L, 283C
                     </span>
                 </div>
                 <p>
@@ -123,6 +187,15 @@
                 <div class="code">
                     <span>~$ git commit -m 'message here'</span>
                 </div>
+                <p>
+                    You can undo your commit if you mess up your commit message or if you just think it isn't descriptive enough.
+                </p>
+                <div class="code">
+                    <span>~$ git commit --amend</span>
+                </div>
+                <p>
+                    This command will output your previous commit with the commit message you specified, you can edit the message or just change it entirely.
+                </p>
                 <p>
                     Another useful Git command is:
                 </p>
@@ -149,6 +222,119 @@
                 <p>
                     This becomes really useful if all the commit messages of the repositories aren't descriptive enough. Most developers don't put a lot of thought and effort into writing good commit messages because the 'log' can be self-explanatory but as the project expands with more and more features being added and updates being made, it can get confusing.
                 </p>
+                <br>
+                <p>
+                    If you only want to see the details of what you've staged "added" before committing, you run:
+                </p>
+                <div class="code">
+                    <span>~$ git diff --staged</span>
+                </div>
+                <p>
+                    This will compare all your staged changes to your last recent commit.
+                </p>
+                <div class="code">
+                    <span>
+                        diff --git a/README b/README<br>
+                        new file mode 100644<br>
+                        index 0000000..03902a1<br>
+                        --- /dev/null<br>
+                        +++ b/README<br>
+                        @@ -0,0 +1 @@<br>
+                        +My Project
+                    </span>
+                </div>
+                <p>
+                    Another feature I think is awesome with Git is the ability to time travel:
+                </p>
+                <div class="code">
+                    <span>~$ git log</span>
+                </div>
+                <p>
+                    Will output all the commits made in the repo with their timestamps and who made them.
+                </p>
+                <div class="code">
+                    <span>
+                        <span class="id">commit d6a16d9d7d0f075576ca401ad69ed2cd7d38c8f2</span> (<span class="head">HEAD -></span> master, <span class="brnch">origin/master</span>)<br>
+                        Author: lifeoncode < lifeoncode@outlook.com ><br>
+                        Date:   Tue Nov 3 14:44:38 2020 +0200<br><br>
+
+                            resized the nav on 400px screensize<br><br>
+
+                        <span class="id">commit e0764862306e2655c241e41b1d1906a2548ba980</span><br>
+                        Author: lifeoncode < lifeoncode@outlook.com ><br>
+                        Date:   Tue Nov 3 14:36:01 2020 +0200<br><br>
+
+                            local section complete<br><br>
+
+                        <span class="id">commit 9ed9f2184a7b02cf0050f8abd6cc87821307817a</span><br>
+                        Author: lifeoncode < lifeoncode@outlook.com ><br>
+                        Date:   Tue Nov 3 12:39:37 2020 +0200<br><br>
+
+                            a git commit<br><br>
+
+                        <span class="id">commit a857fba0238743d2bc4507717cd585f011cf8d63</span><br>
+                        Author: lifeoncode < lifeoncode@outlook.com ><br>
+                        Date:   Mon Oct 26 12:59:07 2020 +0200<br><br>
+
+                            initial commit<br><br>
+
+                        <span class="id">commit af07d39fe744e58126827ddc3848d59a0189a801</span><br>
+                        Author: lifeoncode < lifeoncode@outlook.com ><br>
+                        Date:   Fri Oct 23 15:16:57 2020 +0200<br><br>
+
+                            initial commit<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        ~<br>
+                        lifeoncode@kali:~/lifeoncode/docs/git$ 
+                    </span>
+                </div>
+                <p>
+                    The HEAD is your latest commit. This is the state at which your repository is at. There may be changes you've made after your last commit but they won't appear here as they aren't committed yet. From here you can do something pretty cool, revert back to a previous version of the repo. Here's how you do it:
+                </p>
+                <div class="code">
+                    <span>~$ git reset --hard af07d39fe744e58126827ddc3848d59a0189a801</span>
+                </div>
+                <p>
+                    This command will revert the repo back to the 'initial commit' commit. This is done by 'resetting' the repo to a specified 'commit id' which is a string of characters which uniquely identify the commit.
+                </p>
+                <div class="code">
+                    <span>~$ git reset --hard</span>
+                </div>
+                <p>
+                    Resetting without specifying the commit id will revert to your latest commit. This means any changes you may have made that weren't committed will be erased.
+                </p>
+                <br>
+                <p>
+                    Git offers the option to view even more detailed information about the commit history of a repo.
+                </p>
+                <div class="code">
+                    <span>~$ git log --patch</span>
+                    <span>~$ git log -3</span>
+                </div>
+                <p>
+                    The first command 'git log --patch' will output the log with each commit displaying the exact changes that were made (much like running 'git diff').<br> The second command 'git log -3' will output only the last 3 commits of a repository, you can use any number you want in the flag, I just used 3 as an example.
+                </p>
+                <p>
+                    You can also chain these commands:
+                </p>
+                <div class="code">
+                    <span>~$ git log --patch -3</span>
+                </div>
+                <p>
+                    Git will output detailed info about the last 3 commits.
+                </p>
             </div>
             
 
@@ -165,9 +351,7 @@
 
             <!-- branching -->
             <div id="remote-content">
-                <p>
-                    THIS IS REMOTE.
-                </p>
+                
             </div>
         </div>
     </main>
