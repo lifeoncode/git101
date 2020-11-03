@@ -159,4 +159,13 @@ main .container nav span.btn:hover {
 main .container nav span.btn.current {
   border-bottom: 4px solid red;
 }
+
+@media screen and (max-width: 400px) {
+  main .container nav {
+    padding: 5px 14px 0 14px;
+  }
+  main .container nav span.btn {
+    font-size: 11px;
+  }
+}
 /*# sourceMappingURL=style.css.map */

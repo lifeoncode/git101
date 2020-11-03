@@ -105,3 +105,16 @@ main {
     }
   }
 }
+
+@media screen and (max-width: 400px) {
+  main {
+    .container {
+      nav {
+        padding: 5px 14px 0 14px;
+        span.btn {
+          font-size: $medium - 4;
+        }
+      }
+    }
+  }
+}
