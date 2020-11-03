@@ -5,33 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="./scss/style.css">
-    <title>Git in #100DaysOfCode</title>
+    <title>Git 101</title>
 </head>
 <body>
     <header>
-        <h1>This is about Git</h1>
+        <h1>This is Git</h1>
     </header>
 
     <main>
         <div class="container">
-            <h2>More specifically, what I learned in Git during my #100DaysOfCode.</h2>
+            <h2>If you're reading this you already know what Git is and what it is used for so I'm not gonna explain that.</h2>
 
             <nav>
-                <span class="btn current" id="repo">REPOS</span>
+                <span class="btn current" id="repo">LOCAL</span>
                 <span class="btn" id="branch">BANCHING</span>
                 <span class="btn" id="remote">REMOTE</span>
             </nav>
 
-            <!-- repository -->
+            <!-- local repositories -->
             <div class="repos">
+                <p>
+                    The repositories in your machine are referred to as 'local repositories'. Git keeps track of files in your repos so they're ready for pushing to Github. (more on that on "remote").
+                </p>
                 <div class="code">
                     <span>~$ git init</span>
                 </div>
                 <p>
-                   This will initialise a .git directory (which is usually invisible but can be viewed in the terminal or by modifying the settings). You're basically telling the directory that you want to track it's content.
+                   This will initialise a .git directory (which is usually invisible but can be viewed in the terminal or by modifying the settings). You're basically telling the directory you're in that you want to track it's content, essentially turning it into a repo.
                 </p>
                 <div class="code">
-                    <span>~$ git add filename.here</span>
+                    <span>~$ git add 'filename here'</span>
                     <span>~$ git add .</span>
                 </div>
                 <p>
@@ -41,7 +44,7 @@
                     <span>~$ git status</span>
                 </div>
                 <p>
-                    Git will return information about changes, if they exist and are unstaged, relevant file names will appear in red but if changes are staged but not committed, they'll appear in green or gray depending on your OS, otherwise:
+                    Git will return the 'status' of the repo, if there are any changes, relevant file names will appear in red but if changes are staged but not committed, they'll appear in green or gray depending on your OS, otherwise:
                 </p>
                 <div class="code">
                     <span>~$ git status</span>
@@ -55,7 +58,7 @@
                     <span>~$ git commit</span>
                 </div>
                 <p>
-                    Commit checks the index/ staging area for changes that were staged "added" makes a snapshot at a point in time (which you can always go back to if you want a preveous version of your project).
+                    Commit checks the index/staging area for changes that were staged "added", makes a snapshot at a point in time (which you can always go back to if you want a preveous version of your project).
                 </p>
                 <div class="code">
                     <span>~$ git commit</span>
